@@ -1,0 +1,79 @@
+﻿@model Library.Models.Patron.PatronDetailModel
+@{
+    ViewBag.Title = $"Patron: {@Model.LastName}, {@Model.FirstName}";
+}
+
+<section>
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="row">
+            <div class="col-md-8 px-0">
+                <h1 class="display-1 fw-bold">@Model.FirstName @Model.LastName</h1>
+                <p class="lead my-3">Member for @Model.MemberSince</p>
+            </div>
+            <div class="col-4">
+                <h4>Patron Info</h4>
+                <table class="table table-sm table-dark text-white">
+                    <tr>
+                        <td>Address</td>
+                        <td>@Model.Address</td>
+                    </tr>
+                    <tr>
+                        <td>Telephone</td>
+                        <td>@Model.Telephone</td>
+                    </tr>
+                    <tr>
+                        <td>OverdueFees</td>
+                        <td>@Model.OverdueFees</td>
+                    </tr>
+                    <tr>
+                        <td>LibraryCardId</td>
+                        <td>@Model.LibraryCardId</td>
+                    </tr>
+                    <tr>
+                        <td>HomeLibrary</td>
+                        <td>@Model.HomeLibraryBranch</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr />
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h4>Current Checked Out Assets</h4>
+                @if (!Model.AssestsCheckedOut.Any())
+                {
+                    <p>
+                        No items checked out.
+                    </p>
+                }
+                else
+                {
+                    <table class="table table-sm">
+                    </table>
+                }
+            </div>
+            <div class="col-6">
+                <h4>Current Holds</h4>
+                @if (!Model.Holds.Any())
+                {
+                    <p>
+                        No items currently on hold.
+                    </p>
+                }
+                else
+                {
+                    <table class="table table-sm">
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr />
